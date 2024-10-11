@@ -17,7 +17,7 @@ NVIDIA Ingest enables parallel document splitting to rapidly extract data from m
 ## Get Started
 
 1. Apply for [Early Access](https://developer.nvidia.com/nemo-microservices).
-2. Once you have the Early Access, login to NGC and Follow the below instructions 
+2. Once you have the Early Access, login to NGC and download the `Enterprise RAG - Docker workflow` Resoruce and then Follow the below instructions 
 
     * Install [Docker Engine and Docker Compose](https://docs.docker.com/engine/install/ubuntu/).
 
@@ -43,7 +43,7 @@ NVIDIA Ingest enables parallel document splitting to rapidly extract data from m
         Refer to the [NVIDIA Linux driver installation instructions](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) for more information.
 
     * Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
-    
+
     Verify the toolkit is installed and configured as the default container runtime.
 
             ```

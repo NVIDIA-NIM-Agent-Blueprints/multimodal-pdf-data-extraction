@@ -1,0 +1,38 @@
+version: '3'
+services:
+  nv-ingest-ms-notebook:
+    image: nvcr.io/ohlfw0olaadg/ea-participants/nv-ingest:24.08
+    ports:
+      - "8888:8888"
+    cap_add:
+      - sys_nice
+    environment:
+      - CACHED_GRPC_ENDPOINT=cached:8001
+      - CACHED_HTTP_ENDPOINT=""
+      - DEPLOT_GRPC_ENDPOINT=""
+      - DEPLOT_HTTP_ENDPOINT=http://deplot:8000/v1/chat/completions
+      - DOUGHNUT_GRPC_TRITON=triton-doughnut:8001
+      - INGEST_LOG_LEVEL=INFO
+      - MESSAGE_CLIENT_HOST=redis
+      - MESSAGE_CLIENT_PORT=6379
+      - MINIO_BUCKET=${MINIO_BUCKET:-nv-ingest}
+      - NGC_API_KEY=${NGC_API_KEY:-ngcapikey}
+      - NVIDIA_BUILD_API_KEY=${NVIDIA_BUILD_API_KEY:-nvidiabuildkey}
+      - OTEL_EXPORTER_OTLP_ENDPOINT=otel-collector:4317
+      - PADDLE_GRPC_ENDPOINT=paddle:8001
+      - PADDLE_HTTP_ENDPOINT=""
+      - REDIS_MORPHEUS_TASK_QUEUE=morpheus_task_queue
+      - TABLE_DETECTION_GRPC_TRITON=yolox:8001
+      - TABLE_DETECTION_HTTP_TRITON=""
+      - YOLOX_GRPC_ENDPOINT=yolox:8001
+      - YOLOX_HTTP_ENDPOINT=""
+      - CUDA_VISIBLE_DEVICES=3
+    volumes:
+      - ./notebook:/workspace/notebooks
+    command:
+      - /bin/bash
+      - -c
+      - |
+        pip install notebook --quiet
+        jupyter notebook --no-browser --allow-root --NotebookApp.token='' --ip 0.0.0.0 --notebook-dir=/workspace/notebooks
+
