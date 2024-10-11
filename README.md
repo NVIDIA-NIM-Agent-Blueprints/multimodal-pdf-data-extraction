@@ -133,4 +133,4 @@ NVIDIA Ingest enables parallel document splitting to rapidly extract data from m
 
 ### Next Steps
 
-Refer to the ![Notebooks](./notebooks/READEME.md) to evalute the  MultiModel RAG with LangChain
+Refer to the [Notebooks](./notebooks) to evalute the  MultiModel RAG with LangChain
