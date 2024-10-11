@@ -14,6 +14,15 @@ This blueprint is based on [NVIDIA-Ingest](https://github.com/NVIDIA/nv-ingest) 
 
 NVIDIA Ingest enables parallel document splitting to rapidly extract data from many documents at the same time.
 
+## Prerequisites
+
+#### Hardware
+
+| GPU | Family | Memory | # of GPUs (min.) |
+| ------ | ------ | ------ | ------ |
+| H100 | SXM/NVLink or PCIe | 80GB | 2 |
+| A100 | SXM/NVLink or PCIe | 80GB | 2 |
+
 ## Get Started
 
 1. Apply for [Early Access](https://developer.nvidia.com/nemo-microservices).
@@ -24,19 +33,21 @@ NVIDIA Ingest enables parallel document splitting to rapidly extract data from m
     * Verify NVIDIA GPU driver version 535 or later is installed.
 
         ```
-        nvidia-smi --query-gpu=driver_version --format=csv,noheader
-        535.129.03
+        $ nvidia-smi --query-gpu=driver_version --format=csv,noheader
+        550.90.07
 
         $ nvidia-smi -q -d compute
 
         ==============NVSMI LOG==============
 
-        Timestamp                                 : Sun Nov 26 21:17:25 2023
-        Driver Version                            : 535.129.03
-        CUDA Version                              : 12.2
+        Timestamp                                 : Thus Oct 11 21:17:25 2024
+        Driver Version                            : 550.90.07
+        CUDA Version                              : 12.4
 
-        Attached GPUs                             : 1
+        Attached GPUs                             : 2
         GPU 00000000:CA:00.0
+            Compute Mode                          : Default
+        GPU 00000000:CC:00.0
             Compute Mode                          : Default
         ```
 
@@ -60,6 +71,7 @@ NVIDIA Ingest enables parallel document splitting to rapidly extract data from m
 
             $ sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi -L
             GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-d8ce95c1-12f7-3174-6395-e573163a2ace)
+            GPU 1: NVIDIA A100 80GB PCIe (UUID: GPU-49902a43-6199-5249-02c6-19515fc0cc56)
             
 
     * Create an NGC account and API Key. Refer to the [instructions](https://docs.nvidia.com/ngc/gpu-cloud/ngc-overview/index.html) to create an account and generate an NGC API key.
